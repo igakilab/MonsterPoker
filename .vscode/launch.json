@@ -1,0 +1,17 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Debug (Launch)",
+      "request": "launch",
+      "mainClass": "${fileBasenameNoExtension}",
+      "args": "",
+      "console": "integratedTerminal",
+      "stopOnEntry": false,
+      "encoding": "ms932",
+      "classPaths": [
+        "${workspaceFolder}\\bin"
+      ]
+    }
+  ]
+}

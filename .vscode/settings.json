@@ -1,0 +1,60 @@
+{
+  "files.encoding": "utf8",
+  "java.home": "c:\\oit\\openjdk1.8.0.212",
+  "java.jdt.ls.vmargs": "-noverify -Dfile.encoding=utf8 -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
+  "java.trace.server": "messages",
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "terminal.integrated.shell.windows": "C:\\oit\\PortableGit-2.21.0-64\\bin\\bash.exe",
+  "terminal.integrated.env.windows": {
+    "MSYSTEM": "MINGW64",
+    "CHERE_INVOKING": "1"
+  },
+  "terminal.integrated.shellArgs.windows": [
+    "--login",
+    "-i"
+  ],
+  "extensions.ignoreRecommendations": true,
+  "files.exclude": {
+    "bin/": true,
+    ".*": true,
+    "**/.*": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "workbench.editor.enablePreview": false,
+  "workbench.colorTheme": "Default Light+",
+  "workbench.editor.labelFormat": "short", // タブに表示する文字列の設定
+  "workbench.editor.tabSizing": "shrink", // タブの表示設定
+  "files.eol": "\n",
+  "files.autoSave": "onFocusChange",
+  "files.insertFinalNewline": true, // ファイルの保存時に末尾を改行
+  "files.trimFinalNewlines": true, // ファイルの保存時に最終行以降をトリミング
+  "files.trimTrailingWhitespace": true, // ファイルの保存時に行末の空白をトリミング
+  "editor.codeLens": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.fontFamily": "Consolas, monospace",
+  "editor.fontSize": 15,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.tabSize": 2,
+  "editor.tabCompletion": "on",
+  "editor.detectIndentation": false,
+  "editor.wordWrap": "on",
+  "editor.renderControlCharacters": true,
+  "editor.minimap.showSlider": "always",
+  "editor.renderLineHighlight": "all", // 選択行を行番号含めすべてハイライト
+  "editor.quickSuggestions": {
+    "comments": false, // コメント内では無効
+    "strings": true, // 文字列内では有効
+    "other": true //  その他の場所で有効
+  },
+  "editor.folding": true, // コードの折りたたみを許可
+  "editor.lineNumbers": "on", // 行番号の表示
+  "editor.matchBrackets": true, // 対応する括弧の強調表示をオンに
+  "git.enabled": false,
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false
+}
