@@ -16,6 +16,24 @@ public class MonsterPoker {
   Random card = new Random();
   int cpuExchangeCards[] = new int[5];// それぞれ0,1でどのカードを交換するかを保持する．{0,1,1,0,1}の場合は2,3,5枚目のカードを交換することを表す
   String cpuExchange = new String();// 交換するカードを1~5の数字の組み合わせで保持する．上の例の場合，"235"となる．
+  int playerYaku[] = new int[5];// playerのモンスターカードがそれぞれ何枚ずつあるかを保存する配列．{2,3,0,0,0}の場合，ID0が2枚,ID1が3枚あることを示す．
+  double playerApRate = 1;// 役によるAP倍率．1.5倍の場合は1.5となる
+  double playerDpRate = 1;
+  // 役判定用フラグ
+  // 役判定
+  // 5が1つある：ファイブ->five = true
+  // 4が1つある：フォー->four = true
+  // 3が1つあり，かつ，2が1つある：フルハウス->three = true and pair = 1
+  // 2が2つある：ツーペア->pair = 2
+  // 3が1つある：スリー->three = true;
+  // 2が1つある：ペア->pair = 1
+  // 1が5つある：スペシャルファイブ->one=5
+  boolean five = false;
+  boolean four = false;
+  boolean three = false;
+  int pair = 0; // pair数を保持する
+  int one = 0;// 1枚だけのカードの枚数
+  // boolean specialFive = false;
 
   /**
    * 5枚のモンスターカードをプレイヤー/CPUが順に引く
@@ -63,6 +81,7 @@ public class MonsterPoker {
         System.out.println();
       }
     }
+    scanner.close();
 
     System.out.println("CPUのDraw！");
     for (int i = 0; i < cpuDeck.length; i++) {
@@ -111,7 +130,6 @@ public class MonsterPoker {
       this.cpuExchange = "0";
     }
     System.out.println(this.cpuExchange);
-    Thread.sleep(2000);
 
     // カードの交換
     if (cpuExchange.charAt(0) != '0') {
@@ -162,7 +180,6 @@ public class MonsterPoker {
       this.cpuExchange = "0";
     }
     System.out.println(this.cpuExchange);
-    Thread.sleep(2000);
 
     // カードの交換
     if (cpuExchange.charAt(0) != '0') {
@@ -178,8 +195,78 @@ public class MonsterPoker {
     }
   }
 
-  public void battlePhase() {
+  public void battlePhase() throws InterruptedException {
+    // Playerの役の判定
+    // 役判定用配列の初期化
+    for (int i = 0; i < playerYaku.length; i++) {
+      this.playerYaku[i] = 0;
+    }
+    // モンスターカードが何が何枚あるかをplayerYaku配列に登録
+    for (int i = 0; i < playerDeck.length; i++) {
+      this.playerYaku[this.playerDeck[i]]++;
+    }
+    // playerYaku配列表示
+    for (int i = 0; i < playerYaku.length; i++) {
+      System.out.print(this.playerYaku[i]);
+    }
+    // 役判定
+    // 5が1つある：ファイブ
+    // 4が1つある：フォー
+    // 3が1つあり，かつ，2が1つある：フルハウス
+    // 2が2つある：ツーペア
+    // 3が1つある：スリー
+    // 2が1つある：ペア
+    // 1が5つある：スペシャルファイブ
+    // 初期化
+    five = false;
+    four = false;
+    three = false;
+    pair = 0; // pair数を保持する
+    one = 0;// 1枚だけのカードの枚数
+    // 手札ごとのplayerYaku配列の作成
+    for (int i = 0; i < playerYaku.length; i++) {
+      if (playerYaku[i] == 1) {
+        one++;
+      } else if (playerYaku[i] == 2) {
+        pair++;
+      } else if (playerYaku[i] == 3) {
+        three = true;
+      } else if (playerYaku[i] == 4) {
+        four = true;
+      } else if (playerYaku[i] == 5) {
+        five = true;
+      }
+    }
 
+    // 役の判定
+    System.out.println("Playerの役は・・");
+    Thread.sleep(1000);
+    if (one == 5) {
+      System.out.println("スペシャルファイブ！AP/DPは両方10倍！");
+      this.playerApRate = 10;
+      this.playerDpRate = 10;
+    } else if (five == true) {
+      System.out.println("ファイブ！AP/DPは両方5倍！");
+      this.playerApRate = 5;
+      this.playerDpRate = 5;
+    } else if (four == true) {
+      System.out.println("フォー！AP/DPは両方4倍！");
+      this.playerApRate = 3;
+      this.playerDpRate = 3;
+    } else if (three == true && pair == 1) {
+      System.out.println("フルハウス！AP/DPは両方3倍");
+      this.playerApRate = 3;
+      this.playerDpRate = 3;
+    } else if (pair == 2) {
+      System.out.println("ツーペア！AP/DPは両方2倍");
+      this.playerApRate = 2;
+      this.playerDpRate = 2;
+    } else if (pair == 1) {
+      System.out.println("ワンペア！AP/DPは両方1/2倍");
+      this.playerApRate = 0.5;
+      this.playerDpRate = 0.5;
+    }
+    // APとDPの計算
   }
 
   public int getPlayerHp() {

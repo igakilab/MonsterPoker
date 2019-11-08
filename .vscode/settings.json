@@ -1,10 +1,11 @@
 {
   "files.encoding": "utf8",
-  "java.home": "c:\\oit\\openjdk1.8.0.212",
+  "java.home": "C:\\oit\\openjdk1.8.0.212",
   "java.jdt.ls.vmargs": "-noverify -Dfile.encoding=utf8 -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication",
   "java.trace.server": "messages",
   "java.errors.incompleteClasspath.severity": "ignore",
-  "terminal.integrated.shell.windows": "C:\\oit\\PortableGit-2.21.0-64\\bin\\bash.exe",
+  "java.debug.settings.console": "integratedTerminal",
+  "terminal.integrated.shell.windows": "C:\\oit\\is_advanced\\PortableGit-2.23.0-64\\bin\\bash.exe",
   "terminal.integrated.env.windows": {
     "MSYSTEM": "MINGW64",
     "CHERE_INVOKING": "1"
