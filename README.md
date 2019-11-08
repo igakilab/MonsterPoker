@@ -16,7 +16,7 @@
 - 一行に付くドットの数の限界に挑戦したい（クラスを作らないと難しい．．．）
 - 同じコードを何回でも書く
 
-## MonsterPoker仕様(未完)
+## MonsterPoker仕様
 - Main.javaではMonsterPokerクラスをnewしたあと，繰り返しdrawPhase(),battlePhaseを呼び出し，player/cpuいずれかのHPが0以下になるまで繰り返す．
 - drawPhase()では，下記の順に処理が行われる
   1. モンスターカードを5枚引き，表示する
