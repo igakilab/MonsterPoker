@@ -8,25 +8,25 @@ public class MonsterPoker {
 
   Random card = new Random();
 
-  double playerHp = 1000;
-  double cpuHp = 1000;
+  double p11 = 1000;
+  double c12 = 1000;
   int playerDeck[] = new int[5]; // 0~4までの数字（モンスターID）が入る
   int cpuDeck[] = new int[5];
   String monsters[] = { "スライム", "サハギン", "ドラゴン", "デュラハン", "シーサーペント" };// それぞれが0~4のIDのモンスターに相当する
   int monsterAp[] = { 10, 20, 30, 25, 30 };
   int monsterDp[] = { 40, 20, 25, 15, 20 };
   int cpuExchangeCards[] = new int[5];// それぞれ0,1でどのカードを交換するかを保持する．{0,1,1,0,1}の場合は2,3,5枚目のカードを交換することを表す
-  String cpuExchange = new String();// 交換するカードを1~5の数字の組み合わせで保持する．上の例の場合，"235"となる．
+  String c13 = new String();// 交換するカードを1~5の数字の組み合わせで保持する．上の例の場合，"235"となる．
   int playerYaku[] = new int[5];// playerのモンスターカードがそれぞれ何枚ずつあるかを保存する配列．{2,3,0,0,0}の場合，ID0が2枚,ID1が3枚あることを示す．
   int cpuYaku[] = new int[5];// playerのモンスターカードがそれぞれ何枚ずつあるかを保存する配列．{2,3,0,0,0}の場合，ID0が2枚,ID1が3枚あることを示す．
-  double playerApRate = 1;// 役によるAP倍率．1.5倍の場合は1.5となる
-  double playerDpRate = 1;
-  double playerAp = 0;
-  double playerDp = 0;
-  double cpuApRate = 1;// 役によるAP倍率．1.5倍の場合は1.5となる
-  double cpuDpRate = 1;
-  double cpuAp = 0;
-  double cpuDp = 0;
+  double p15 = 1;// 役によるAP倍率．1.5倍の場合は1.5となる
+  double p16 = 1;
+  double p17 = 0;
+  double p18 = 0;
+  double c15 = 1;// 役によるAP倍率．1.5倍の場合は1.5となる
+  double c16 = 1;
+  double c17 = 0;
+  double c18 = 0;
   // 役判定用フラグ
   // 役判定
   // 5が1つある：ファイブ->five = true
@@ -125,21 +125,21 @@ public class MonsterPoker {
     }
 
     // 交換するカード番号の表示
-    this.cpuExchange = "";
+    this.c13 = "";
     for (int i = 0; i < cpuExchangeCards.length; i++) {
       if (this.cpuExchangeCards[i] == 1) {
-        this.cpuExchange = this.cpuExchange + (i + 1);
+        this.c13 = this.c13 + (i + 1);
       }
     }
-    if (this.cpuExchange.length() == 0) {
-      this.cpuExchange = "0";
+    if (this.c13.length() == 0) {
+      this.c13 = "0";
     }
-    System.out.println(this.cpuExchange);
+    System.out.println(this.c13);
 
     // カードの交換
-    if (cpuExchange.charAt(0) != '0') {
-      for (int i = 0; i < cpuExchange.length(); i++) {
-        this.cpuDeck[Character.getNumericValue(cpuExchange.charAt(i)) - 1] = card.nextInt(5);
+    if (c13.charAt(0) != '0') {
+      for (int i = 0; i < c13.length(); i++) {
+        this.cpuDeck[Character.getNumericValue(c13.charAt(i)) - 1] = card.nextInt(5);
       }
       // カードの表示
       System.out.print("[CPU]");
@@ -175,21 +175,21 @@ public class MonsterPoker {
     }
 
     // 交換するカード番号の表示
-    this.cpuExchange = "";
+    this.c13 = "";
     for (int i = 0; i < cpuExchangeCards.length; i++) {
       if (this.cpuExchangeCards[i] == 1) {
-        this.cpuExchange = this.cpuExchange + (i + 1);
+        this.c13 = this.c13 + (i + 1);
       }
     }
-    if (this.cpuExchange.length() == 0) {
-      this.cpuExchange = "0";
+    if (this.c13.length() == 0) {
+      this.c13 = "0";
     }
-    System.out.println(this.cpuExchange);
+    System.out.println(this.c13);
 
     // カードの交換
-    if (cpuExchange.charAt(0) != '0') {
-      for (int i = 0; i < cpuExchange.length(); i++) {
-        this.cpuDeck[Character.getNumericValue(cpuExchange.charAt(i)) - 1] = card.nextInt(5);
+    if (c13.charAt(0) != '0') {
+      for (int i = 0; i < c13.length(); i++) {
+        this.cpuDeck[Character.getNumericValue(c13.charAt(i)) - 1] = card.nextInt(5);
       }
       // カードの表示
       System.out.print("[CPU]");
@@ -241,48 +241,48 @@ public class MonsterPoker {
 
     // 役の判定
     System.out.println("Playerの役は・・");
-    this.playerApRate = 1;// 初期化
-    this.playerDpRate = 1;
+    this.p15 = 1;// 初期化
+    this.p16 = 1;
     if (one == 5) {
       System.out.println("スペシャルファイブ！AP/DPは両方10倍！");
-      this.playerApRate = 10;
-      this.playerDpRate = 10;
+      this.p15 = 10;
+      this.p16 = 10;
     } else if (five == true) {
       System.out.println("ファイブ！AP/DPは両方5倍！");
-      this.playerApRate = 5;
-      this.playerDpRate = 5;
+      this.p15 = 5;
+      this.p16 = 5;
     } else if (four == true) {
       System.out.println("フォー！AP/DPは両方4倍！");
-      this.playerApRate = 3;
-      this.playerDpRate = 3;
+      this.p15 = 3;
+      this.p16 = 3;
     } else if (three == true && pair == 1) {
       System.out.println("フルハウス！AP/DPは両方3倍");
-      this.playerApRate = 3;
-      this.playerDpRate = 3;
+      this.p15 = 3;
+      this.p16 = 3;
     } else if (three == true) {
       System.out.println("スリーカード！AP/DPはそれぞれ3倍と2倍");
-      this.playerApRate = 3;
-      this.playerDpRate = 2;
+      this.p15 = 3;
+      this.p16 = 2;
     } else if (pair == 2) {
       System.out.println("ツーペア！AP/DPは両方2倍");
-      this.playerApRate = 2;
-      this.playerDpRate = 2;
+      this.p15 = 2;
+      this.p16 = 2;
     } else if (pair == 1) {
       System.out.println("ワンペア！AP/DPは両方1/2倍");
-      this.playerApRate = 0.5;
-      this.playerDpRate = 0.5;
+      this.p15 = 0.5;
+      this.p16 = 0.5;
     }
     Thread.sleep(1000);
 
     // APとDPの計算
     for (int i = 0; i < playerYaku.length; i++) {
       if (playerYaku[i] >= 1) {
-        this.playerAp = this.playerAp + this.monsterAp[i] * playerYaku[i];
-        this.playerDp = this.playerDp + this.monsterDp[i] * playerYaku[i];
+        this.p17 = this.p17 + this.monsterAp[i] * playerYaku[i];
+        this.p18 = this.p18 + this.monsterDp[i] * playerYaku[i];
       }
     }
-    this.playerAp = this.playerAp * this.playerApRate;
-    this.playerDp = this.playerDp * this.playerDpRate;
+    this.p17 = this.p17 * this.p15;
+    this.p18 = this.p18 * this.p16;
 
     // CPUの役の判定
     // 役判定用配列の初期化
@@ -324,48 +324,48 @@ public class MonsterPoker {
 
     // 役の判定
     System.out.println("CPUの役は・・");
-    this.cpuApRate = 1;// 初期化
-    this.cpuDpRate = 1;
+    this.c15 = 1;// 初期化
+    this.c16 = 1;
     if (one == 5) {
       System.out.println("スペシャルファイブ！AP/DPは両方10倍！");
-      this.cpuApRate = 10;
-      this.cpuDpRate = 10;
+      this.c15 = 10;
+      this.c16 = 10;
     } else if (five == true) {
       System.out.println("ファイブ！AP/DPは両方5倍！");
-      this.cpuApRate = 5;
-      this.cpuDpRate = 5;
+      this.c15 = 5;
+      this.c16 = 5;
     } else if (four == true) {
       System.out.println("フォー！AP/DPは両方4倍！");
-      this.cpuApRate = 3;
-      this.cpuDpRate = 3;
+      this.c15 = 3;
+      this.c16 = 3;
     } else if (three == true && pair == 1) {
       System.out.println("フルハウス！AP/DPは両方3倍");
-      this.cpuApRate = 3;
-      this.cpuDpRate = 3;
+      this.c15 = 3;
+      this.c16 = 3;
     } else if (three == true) {
       System.out.println("スリーカード！AP/DPはそれぞれ3倍と2倍");
-      this.cpuApRate = 3;
-      this.cpuDpRate = 2;
+      this.c15 = 3;
+      this.c16 = 2;
     } else if (pair == 2) {
       System.out.println("ツーペア！AP/DPは両方2倍");
-      this.cpuApRate = 2;
-      this.cpuDpRate = 2;
+      this.c15 = 2;
+      this.c16 = 2;
     } else if (pair == 1) {
       System.out.println("ワンペア！AP/DPは両方1/2倍");
-      this.cpuApRate = 0.5;
-      this.cpuDpRate = 0.5;
+      this.c15 = 0.5;
+      this.c16 = 0.5;
     }
     Thread.sleep(1000);
 
     // APとDPの計算
     for (int i = 0; i < cpuYaku.length; i++) {
       if (cpuYaku[i] >= 1) {
-        this.cpuAp = this.cpuAp + this.monsterAp[i] * cpuYaku[i];
-        this.cpuDp = this.cpuDp + this.monsterDp[i] * cpuYaku[i];
+        this.c17 = this.c17 + this.monsterAp[i] * cpuYaku[i];
+        this.c18 = this.c18 + this.monsterDp[i] * cpuYaku[i];
       }
     }
-    this.cpuAp = this.cpuAp * this.cpuApRate;
-    this.cpuDp = this.cpuDp * this.cpuDpRate;
+    this.c17 = this.c17 * this.c15;
+    this.c18 = this.c18 * this.c16;
 
     // バトル
     System.out.println("バトル！！");
@@ -380,12 +380,12 @@ public class MonsterPoker {
     System.out.print("の攻撃！");
     Thread.sleep(1000);
     System.out.println("CPUのモンスターによるガード！");
-    if (this.cpuDp >= this.playerAp) {
+    if (this.c18 >= this.p17) {
       System.out.println("CPUはノーダメージ！");
     } else {
-      double damage = this.playerAp - this.cpuDp;
+      double damage = this.p17 - this.c18;
       System.out.printf("CPUは%.0fのダメージを受けた！\n", damage);
-      this.cpuHp = this.cpuHp - damage;
+      this.c12 = this.c12 - damage;
     }
 
     // CPUの攻撃
@@ -399,25 +399,65 @@ public class MonsterPoker {
     System.out.print("の攻撃！");
     Thread.sleep(1000);
     System.out.println("Playerのモンスターによるガード！");
-    if (this.playerDp >= this.cpuAp) {
+    if (this.p18 >= this.c17) {
       System.out.println("Playerはノーダメージ！");
     } else {
-      double damage = this.cpuAp - this.playerDp;
+      double damage = this.c17 - this.p18;
       System.out.printf("Playerは%.0fのダメージを受けた！\n", damage);
-      this.playerHp = this.playerHp - damage;
+      this.p11 = this.p11 - damage;
     }
 
-    System.out.println("PlayerのHPは" + this.playerHp);
-    System.out.println("CPUのHPは" + this.cpuHp);
+    System.out.println("PlayerのHPは" + this.p11);
+    System.out.println("CPUのHPは" + this.c12);
 
   }
 
   public double getPlayerHp() {
-    return this.playerHp;
+    return this.p11;
   }
 
   public double getCpuHp() {
-    return this.cpuHp;
+    return this.c12;
+  }
+
+  public double getp15() {
+    return this.p15;
+  }
+
+  public void setp15(double p15) {
+    this.p15 = p15;
+  }
+
+  public double getp16() {
+    return this.p16;
+  }
+
+  public void setp16(double p16) {
+    this.p16 = p16;
+  }
+
+  public double getp17() {
+    return this.p17;
+  }
+
+  public void setp17(double p17) {
+    this.p17 = p17;
+  }
+
+  public double getc15() {
+    return this.c15;
+  }
+
+  public void setc15(double c15) {
+    this.c15 = c15;
+  }
+
+  public double getc16() {
+    return this.c16;
+  }
+
+  public void setc16(double c16) {
+    this.c16 = c16;
   }
 
 }
