@@ -16,18 +16,12 @@ public class Main {
    * @throws InterruptedException
    */
   public static void main(String[] args) throws InterruptedException {
-    MonsterPoker mp = new MonsterPoker();
     Scanner scanner = new Scanner(System.in);// 標準入力
+    MonsterPoker game = new MonsterPoker();
     while (true) {
-      mp.drawPhase(scanner);
-      mp.battlePhase();
-      if (mp.getPlayerHp() <= 0 && mp.getCpuHp() <= 0) {
-        System.out.println("引き分け！");
-      } else if (mp.getPlayerHp() <= 0) {
-        System.out.println("CPU Win!");
-      } else if (mp.getCpuHp() <= 0) {
-        System.out.println("Player Win!");
-      } else {
+      game.drawPhase(scanner);
+      game.battlePhase();
+      if (!game.isEnd()) {
         Thread.sleep(2000);
         continue;
       }

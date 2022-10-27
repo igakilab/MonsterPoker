@@ -29,7 +29,7 @@
   "workbench.editor.labelFormat": "short", // タブに表示する文字列の設定
   "workbench.editor.tabSizing": "shrink", // タブの表示設定
   "files.eol": "\n",
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "afterDelay",
   "files.insertFinalNewline": true, // ファイルの保存時に末尾を改行
   "files.trimFinalNewlines": true, // ファイルの保存時に最終行以降をトリミング
   "files.trimTrailingWhitespace": true, // ファイルの保存時に行末の空白をトリミング
@@ -54,8 +54,8 @@
   },
   "editor.folding": true, // コードの折りたたみを許可
   "editor.lineNumbers": "on", // 行番号の表示
-  "editor.matchBrackets": true, // 対応する括弧の強調表示をオンに
-  "git.enabled": false,
+  "editor.matchBrackets": "always", // 対応する括弧の強調表示をオンに
+  "git.enabled": true,
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false
 }
